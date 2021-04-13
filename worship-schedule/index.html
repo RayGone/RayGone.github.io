@@ -36,12 +36,13 @@
                 margin:auto;
                 text-align: center;
                 border: 2px dotted #555;
-                width: 300px;
+                width: 400px;
+                padding: 10px;
             }
         </style>
        
         <div class='container'>
-            <h2>Verse of the Day:</h2>
+            <h2>Verse of the Week:</h2>
             <h3 id="viewing"><span id="verse"></span></h3>
             <div id="verse-content" class="verse-container"></div>
         </div>
@@ -99,13 +100,15 @@
             let list = [];
             let start_date = new Date('2021-04-17');
             let today = new Date();
+            var weeks;
             
             if(dateCompare(start_date,today) !== '<'){
+                weeks = 0;
                 list = names;
             }else{
                 let day = today.getDay()
                 let diff = dateDifference(start_date,today);
-                let weeks = diff/7;
+                weeks = diff/7;
                 if(weeks<=parseInt(weeks)){
                     weeks = parseInt(weeks);
                     if(today.getHours() >= 9) weeks++;
@@ -185,7 +188,7 @@
                 `PHP.2.3-4`,
                 `MAT.5.43-44`,
             ];
-            const verseIndex =  dateDifference(start_date,today)%VERSES.length;
+            const verseIndex =  weeks%VERSES.length;
             const verseID = VERSES[verseIndex];
             getResults(verseID).then((data) => {
                 const passage = data.passages[0];
