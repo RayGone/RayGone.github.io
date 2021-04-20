@@ -85,11 +85,11 @@
                     let offset = weeks%4
 
                     for(let i in names){
-                        list.push(names[(parseInt(i)+offset)%3])
-                        if(i==2){
-                            list.push('Others')
-                            break;
-                        } 
+                        list.push(names[(parseInt(i)+offset)%4])
+                        // if(i==2){
+                        //     list.push('Others')
+                        //     break;
+                        // } 
                     }
                 }
 
