@@ -64,41 +64,60 @@
             let start_date = new Date('2021-04-17');
             let today = new Date();
             var weeks;
+            var state = -1;
             
-            console.log({start_date,today})
-            if(dateCompare(start_date,today) !== '<'){
-                weeks = 0;
-                list = names;
-            }else{
-                let day = today.getDay()
-                let diff = dateDifference(start_date,today);
-                weeks = diff/7;
-                if(weeks<=parseInt(weeks)){
-                    weeks = parseInt(weeks);
-                    if(today.getHours() >= 9) weeks++;
+            function scheduler(){
+                today = new Date();
+                if(dateCompare(start_date,today) !== '<'){
+                    weeks = 0;
+                    list = names;
                 }else{
-                    weeks = parseInt(weeks)+1
+                    let day = today.getDay()
+                    let diff = dateDifference(start_date,today);
+                    weeks = diff/7;
+                    if(weeks<=parseInt(weeks)){
+                        weeks = parseInt(weeks);
+                        if(today.getHours() >= 9) weeks++;
+                    }else{
+                        weeks = parseInt(weeks)+1
+                    }
+                    
+                    let offset = weeks%4
+
+                    for(let i in names){
+                        list.push(names[(parseInt(i)+offset)%3])
+                        if(i==2){
+                            list.push('Others')
+                            break;
+                        } 
+                    }
+                }
+
+                if(state == weeks) return;
+                if(state !== -1){
+                    const verseIndex =  weeks%VERSES.length;
+                    const verseID = VERSES[verseIndex];
+                    getResults(verseID).then((data) => {
+                        const passage = data.passages[0];
+                        verseRef.innerHTML = `<span><i>${passage.reference}</i></span>`;
+                        verse.innerHTML = `<div class="text eb-container">${passage.content}</div>`;
+                    });
                 }
                 
-                let offset = weeks%4
-
-                for(let i in names){
-                    list.push(names[(parseInt(i)+offset)%3])
-                    if(i==2){
-                        list.push('Others')
-                        break;
-                    } 
-                }
+                state = weeks;
+                
+                document.querySelector('#body').innerHTML = '';
+                let htmlString = ''
+                for(let i in list){
+                    let active = '';
+                    if(i==0) active = 'active';
+                    htmlString+= "<div class='items "+active+"'>"+list[i]+"</div>";
+                }      
+                document.querySelector('#body').innerHTML = htmlString;  
+                document.querySelector('#leader').innerHTML = list[0];   
             }
 
-            let htmlString = ''
-            for(let i in list){
-                let active = '';
-                if(i==0) active = 'active';
-                htmlString+= "<div class='items "+active+"'>"+list[i]+"</div>";
-            }      
-            document.querySelector('#body').innerHTML += htmlString;  
-            document.querySelector('#leader').innerHTML = list[0];   
+            scheduler();
         </script>
         <!-- //vod-bible.js depends on values calculated above -->
         <script src="./js/vod-bible.js"></script>
