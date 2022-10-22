@@ -6,18 +6,14 @@
         </title>
         <link rel="shortcut icon" href="./thumbnail.png" type="image/png">
 
-        <script>
-            var audio = document.getElementsByTagName('audio')[0];
-        </script>
-
         <style>
             #invitation-card{
-                height:100vh;
+                height:96vh;
             }
         </style>
     </head>
 
-    <body onload="audio.play();">
+    <body onload="document.getElementsByTagName('audio')[0].play();">
         <audio autoplay loop src="wedding-track.mp3" type="audio/mpeg"></audio>
 
         <img id="invitation-card" src="./Invitation1.jpeg">
