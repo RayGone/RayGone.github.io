@@ -7,13 +7,13 @@
         <link rel="shortcut icon" href="./thumbnail.png" type="image/png">
         
         <link rel="stylesheet" href="./bootstrap4/css/bootstrap.min.css">
-        <link rel="stylesheet" href="./bootstrap5/css/bootstrap.min.css">
+        <!-- <link rel="stylesheet" href="./bootstrap5/css/bootstrap.min.css"> -->
         <link rel="stylesheet" href="./css.css">
     </head>
 
     <body>
         <div class='container-fluid full-width'>
-            <audio autoplay loop src="wedding-track.mp3" type="audio/mpeg"></audio>
+            <audio loop src="wedding-track.mp3" type="audio/mpeg"></audio>
             <div class='row envelope full-width'>
                 <div class='col-md-8 offset-md-2 flex envelope'>
                     <div><img src="./envelope1.jpg" alt="envelope" class="img frame-border">     </div> 
@@ -33,12 +33,12 @@
                         To: Regan Maharjan<br>
                             &nbsp;&nbsp;&nbsp;&nbsp;and Family
                     </p>
-                    <p  style="
+                    <p  class="invitee-text-content"
+                        style="
                             position:absolute;
-                            top: 55vh;"
-                        >    
-                        <br>                     
-                        <span class="btn btn-sm btn-success">Click to open</span>
+                            top: 80vh;"
+                        >                       
+                        <span>Click to open</span>
                     </p>
                 </div>
             </div>
@@ -47,14 +47,14 @@
 
     <script>
         const tryToPlay = setInterval(() => {            
-            document.getElementsByTagName('audio')[0].play()
-                .then(() => {
-                    clearInterval(tryToPlay);
-                    // stopFlicking();
-                })
-                .catch(error => {
-                    console.info('User has not interacted with document yet.');
-                });
+            // document.getElementsByTagName('audio')[0].play()
+            //     .then(() => {
+            //         clearInterval(tryToPlay);
+            //         // stopFlicking();
+            //     })
+            //     .catch(error => {
+            //         console.info('User has not interacted with document yet.');
+            //     });
         }, 250);
 
         function stopFlicking(){
