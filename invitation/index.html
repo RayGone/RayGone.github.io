@@ -5,17 +5,45 @@
             Wedding Invitation
         </title>
         <link rel="shortcut icon" href="./thumbnail.png" type="image/png">
-
-        <style>
-            #invitation-card{
-                height:96vh;
-            }
-        </style>
+        
+        <link rel="stylesheet" href="./bootstrap4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./bootstrap5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./css.css">
     </head>
 
-    <body onload="document.getElementsByTagName('audio')[0].play();">
-        <audio autoplay loop src="wedding-track.mp3" type="audio/mpeg"></audio>
-
-        <img id="invitation-card" src="./Invitation1.jpeg">
+    <body>
+        <div class='container-fluid full-width'>
+            <audio autoplay loop src="wedding-track.mp3" type="audio/mpeg"></audio>
+            <div class='row canopy full-width'>
+                <div class='col-lg-8 offset-lg-2 flex'>
+                    <div class="text-content">                        
+                        <img src="./Invitation.jpeg" alt="envelope" class="img invitation-card-border">
+                        <!-- <p class="flex">
+                            To: {Invitee}
+                        </p> -->
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
+
+    <script>
+        const tryToPlay = setInterval(() => {            
+            document.getElementsByTagName('audio')[0].play()
+                .then(() => {
+                    clearInterval(tryToPlay);
+                    // stopFlicking();
+                })
+                .catch(error => {
+                    console.info('User has not interacted with document yet.');
+                });
+        }, 250);
+
+        function stopFlicking(){
+            document.getElementById('flick').style.display = '';
+            setTimeout(function(){
+                document.getElementById('flick').classList.remove('curtain');
+            },1000);
+        }
+    </script>
 </html>
