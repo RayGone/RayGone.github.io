@@ -1,2 +1,6 @@
 bootstrap4
 bootstrap5
+*.zip
+*orig.png
+*orig.jpg
+*orig.jpeg

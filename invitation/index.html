@@ -8,54 +8,93 @@
         
         <link rel="stylesheet" href="./bootstrap4/css/bootstrap.min.css">
         <!-- <link rel="stylesheet" href="./bootstrap5/css/bootstrap.min.css"> -->
-        <link rel="stylesheet" href="./css.css">
+        <link rel="stylesheet" href="./css.css?<?php echo "version=".date("His"); ?>">
     </head>
-
-    <body>
-        <div class='container-fluid full-width'>
-            <audio loop src="wedding-track.mp3" type="audio/mpeg"></audio>
-            <div class='row envelope full-width'>
-                <div class='col-md-8 offset-md-2 flex envelope'>
-                    <div><img src="./envelope1.jpg" alt="envelope" class="img frame-border">     </div> 
-                                       
-                    <p class="invitee-text-content" 
-                        style="
-                            position:absolute;
-                            top: 40vh;"
-                    >
-                        <strong><u>Invitation</u></strong>
-                    </p>
-                    <p class="invitee-text-content"
-                        style="
-                            position:absolute;
-                            top: 45vh;"
-                    >                         
-                        To: Regan Maharjan<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;and Family
-                    </p>
-                    <p  class="invitee-text-content"
-                        style="
-                            position:absolute;
-                            top: 80vh;"
-                        >                       
-                        <span>Click to open</span>
-                    </p>
+    
+    <body class='bg-inv'>
+        <div class='container-fluid'>
+            <div class='row p1 prevent-select'>
+                <div class='col-md-12'>
+                    <div class='full-width flex'>
+                        <div>
+                            <picture class="img invitation-card-border">
+                              <source media="(max-device-width: 700px)" srcset="./envelope1.jpg">
+                              <source media="(min-device-width:700px)" srcset="./envelope2.jpg">
+                              <img src="./envelope2.jpg" alt="envelope" class="img invitation-card-border">
+                            </picture>
+                        </div> 
+                    </div>
+                        <p class="invitee-text-content" 
+                            style="
+                                position:absolute;
+                                top: 30vh;"
+                        >
+                            <strong><u>Invitation</u></strong>
+                        </p>
+                        <p class="invitee-name"
+                            style="
+                                position:absolute;
+                                top: 40vh;"
+                        >                         
+                            To: Regan Maharjan<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;and Family--
+                        </p>
+                        <p  class="invitee-name prevent-select"
+                            style="
+                                position:absolute;
+                                top: 85vh;"
+                            >                       
+                            <span style='box-shadow: 0 0 5px limegreen; padding: 5px'>Click to open</span>
+                        </p>
                 </div>
             </div>
         </div>
     </body>
+    <!--<body class='bg-inv'>-->
+    <!--    <audio autoplay loop src="wedding-track.mp3" type="audio/mpeg"></audio>-->
+    <!--    <div class='container-fluid '>-->
+    <!--        <div class='row'>-->
+    <!--            <div class='col-md-12 flex envelope'>-->
+    <!--                <div><img src="./envelope1.jpg" alt="envelope" class="img invitation-card-border"></div> -->
+                                       
+    <!--                <p class="invitee-text-content" -->
+    <!--                    style="-->
+    <!--                        position:absolute;-->
+    <!--                        top: 40vh;"-->
+    <!--                >-->
+    <!--                    <strong><u>Invitation</u></strong>-->
+    <!--                </p>-->
+    <!--                <p class="invitee-name"-->
+    <!--                    style="-->
+    <!--                        position:absolute;-->
+    <!--                        top: 45vh;"-->
+    <!--                >                         -->
+    <!--                    To: Regan Maharjan<br>-->
+    <!--                        &nbsp;&nbsp;&nbsp;&nbsp;and Family---->
+    <!--                </p>-->
+    <!--                <p  class="invitee-text-content prevent-select"-->
+    <!--                    style="-->
+    <!--                        position:absolute;-->
+    <!--                        top: 80vh;"-->
+    <!--                    >                       -->
+    <!--                    <span>Click to open</span>-->
+    <!--                </p>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--</body>-->
 
     <script>
-        const tryToPlay = setInterval(() => {            
-            // document.getElementsByTagName('audio')[0].play()
-            //     .then(() => {
-            //         clearInterval(tryToPlay);
-            //         // stopFlicking();
-            //     })
-            //     .catch(error => {
-            //         console.info('User has not interacted with document yet.');
-            //     });
-        }, 250);
+        // const tryToPlay = setInterval(() => {            
+        //     document.getElementsByTagName('audio')[0].play()
+        //         .then(() => {
+        //             clearInterval(tryToPlay);
+        //             // stopFlicking();
+        //         })
+        //         .catch(error => {
+        //             console.info('User has not interacted with document yet.');
+        //         });
+        // }, 250);
 
         function stopFlicking(){
             document.getElementById('flick').style.display = '';
@@ -63,5 +102,7 @@
                 document.getElementById('flick').classList.remove('curtain');
             },1000);
         }
+        
+        console.log(screen.width,screen.height)
     </script>
 </html>
