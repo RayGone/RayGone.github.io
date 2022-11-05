@@ -7,14 +7,19 @@
         <link rel="shortcut icon" href="./thumbnail.png" type="image/png">
         
         <link rel="stylesheet" href="./bootstrap4/css/bootstrap.min.css">
-        <!-- <link rel="stylesheet" href="./bootstrap5/css/bootstrap.min.css"> -->
+        <link rel="stylesheet" href="./bootstrap5/css/bootstrap.min.css"> 
         <link rel="stylesheet" href="./css.css?<?php echo "version=".date("His"); ?>">
+        <meta property="og:title" content="The Rock" />
+        <meta property="og:type" content="video.movie" />
+        <meta property="og:url" content="https://www.imdb.com/title/tt0117500/" />
+        <meta property="og:image" content="https://ia.media-imdb.com/images/rock.jpg" />
     </head>
     
     <body class='bg-inv'>
-        <div class='container-fluid'>
-            <div class='row p1 prevent-select'>
-                <div class='col-md-12'>
+        <audio autoplay loop src="wedding-track.mp3" type="audio/mpeg"></audio>
+        <div class='container-fluid p1'>
+            <div class='row prevent-select'>
+                <div class='col-md-12 envelope'>
                     <div class='full-width flex'>
                         <div>
                             <picture class="img invitation-card-border">
@@ -46,6 +51,49 @@
                             >                       
                             <span style='box-shadow: 0 0 5px limegreen; padding: 5px'>Click to open</span>
                         </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class='container-fluid p2'>    
+            <div class='row prevent-select'>
+                <div class='col-md-12 canopy'>
+                    <div class='full-width flex'>
+                        <div>
+                            <picture class="img frame-border">
+                              <source media="(max-device-width: 700px)" srcset="./Invitation.jpeg">
+                              <source media="(min-device-width:700px)" srcset="./Invitation.jpeg">
+                              <img src="./Invitation.jpeg" alt="invitation card" class="img frame-border">
+                            </picture>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class='row p3'>
+                <div id='desc' class='col-md-12'>
+                    <div class='flex'>
+                        <div>
+                            <picture class="img frame-border">
+                              <source media="(max-device-width: 700px)" srcset="./Invitation.jpeg">
+                              <source media="(min-device-width:700px)" srcset="./Invitation.jpeg">
+                              <img src="./Invitation.jpeg" alt="invitation card" class="img frame-border">
+                            </picture>
+                        </div> 
+                    </div>
+                </div>
+                
+                <div id='map' class='col-md-12'>
+                    <div class='full-width flex'>
+                        <div>
+                            <picture class="img frame-border">
+                              <source media="(max-device-width: 700px)" srcset="./Invitation.jpeg">
+                              <source media="(min-device-width:700px)" srcset="./Invitation.jpeg">
+                              <img src="./Invitation.jpeg" alt="invitation card" class="img frame-border">
+                            </picture>
+                        </div> 
+                    </div>
                 </div>
             </div>
         </div>
@@ -85,16 +133,38 @@
     <!--</body>-->
 
     <script>
-        // const tryToPlay = setInterval(() => {            
-        //     document.getElementsByTagName('audio')[0].play()
-        //         .then(() => {
-        //             clearInterval(tryToPlay);
-        //             // stopFlicking();
-        //         })
-        //         .catch(error => {
-        //             console.info('User has not interacted with document yet.');
-        //         });
-        // }, 250);
+    
+        function fadeInCard(){
+            document.querySelector(".p2").classList.add("fade-in");
+            document.querySelector('body').classList.remove('bg-inv');
+            document.querySelector('body').classList.add('bg-main')
+            document.querySelector(".p2").style.opacity= 1;
+            
+            setTimeout(function(){
+                document.querySelector(".p1").style.display='none';
+                document.querySelector(".p3").style.display='block';
+                firstScrollAutomatic();
+            },2500)
+        }
+        
+        function firstScrollAutomatic(){
+            setTimeout(function(){
+                document.querySelector('.p3').scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+            },5000)
+        }
+        
+        const tryToPlay = setInterval(() => {            
+            document.getElementsByTagName('audio')[0].play()
+                .then(() => {
+                    clearInterval(tryToPlay);
+                    document.querySelector(".p1").classList.add('fade-out');
+                    setTimeout( fadeInCard,3500)
+                    // stopFlicking();
+                })
+                .catch(error => {
+                    console.info('User has not interacted with document yet.');
+                });
+        }, 250);
 
         function stopFlicking(){
             document.getElementById('flick').style.display = '';
