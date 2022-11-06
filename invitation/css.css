@@ -38,14 +38,13 @@
 }
 
 .frame-border{
-    /* border: 5px solid rgb(164, 214, 231); */
-    border: 5px solid green;
+    border: 3px solid rgba(233, 229, 226, 0.8);
     border-radius: 10px;
-    box-shadow: 0px 0px 2px 1px lightblue,0px 0px 5px 4px lightblue,0px 0px 10px 8px lightblue;
+    box-shadow: 0px 0px 2px 1px #c6cfcc,0px 0px 5px 4px #d6dfdc,0px 0px 10px 8px #e6efec;
 }
 
 .invitation-card-border{  
-    border: 3px solid rgb(233, 229, 226);
+    border: 3px solid rgba(233, 229, 226,0.8);
     border-radius: 10px;
     box-shadow: 0px 0px 2px 1px #c6cfcc,0px 0px 5px 4px #d6dfdc,0px 0px 10px 8px #e6efec;
 }
@@ -87,6 +86,10 @@
      and (min-device-width: 320px) 
      and (max-device-width: 700px) {
 
+    .img{
+      height: 80vh;
+      width: auto
+    }
 
     .envelope{
       background-color: var(--env-bg-color);
@@ -151,7 +154,33 @@
   mix-blend-mode: difference;
 }
 
-@keyframes background- {
+.fade-out{
+  animation: fade-out 7s ease;
+}
+
+.fade-in{
+  animation: fade-in 5s ease;
+}
+
+@keyframes fade-out {
+	0% {
+        opacity: 1;
+	}
+	100% {
+        opacity: 0;
+	}
+}
+
+@keyframes fade-in {
+	0% {
+        opacity: 0;
+	}
+	100% {
+        opacity: 1;
+	}
+}
+
+@keyframes flicking {
 	0% {
         background-image: linear-gradient(to bottom, var(--color2) 50%, var(--color2) 50%);
 	}
@@ -161,4 +190,55 @@
 	100% {
         background-image: linear-gradient(to bottom, var(--color2) 50%, var(--color2) 50%);
 	}
+}
+
+.p1{
+    position: absolute;
+    z-index:10;
+}
+.p2{
+    opacity: 0.2;
+    z-index:2;
+}
+.p3{
+    display: none;
+}
+
+
+svg{
+  z-index: 100;
+  width: 25vw;
+  max-width: 20rem;
+  height: auto;
+}
+
+#sparkle{
+    position: absolute;
+    top: -50;
+    left: -100;
+}
+
+.sparkles path { 
+  fill: #d4af37;
+  transform-origin: 50% 50%;
+  transform-box: fill-box;
+  animation: sparkle var(--duration) var(--delay) infinite ease-in-out;
+}
+
+@keyframes sparkle {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(0);
+  }
+  70% {
+    transform: scale(-1, 0);
+  }
+  80% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
 }
